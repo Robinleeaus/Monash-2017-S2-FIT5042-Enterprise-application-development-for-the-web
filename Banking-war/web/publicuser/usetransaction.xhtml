@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+            xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{useTransactionController.pageTitle}</title>
+    </h:head>
+    <h:body>
+        <!-- Start Header -->
+        <header>
+            <h1>
+                #{useTransactionController.pageTitle}
+            </h1>
+            <h:outputStylesheet name="bootstrap.min.css" />
+            <h:outputStylesheet name="style.css" />
+        </header>
+        <!-- End Header -->
+        <!-- Start Article -->
+        <article>
+            <h2>
+                Operate banking transactions
+            </h2>
+            <!-- Form -->
+            <h:form>
+                <div>
+                    Type your user ID
+                </div>
+                <div>
+                    <h:inputText id="userId" label="userId" required="true" requiredMessage="You must
+                                 enter the user ID!" value="#{userInput.userId}"
+                                 validatorMessage="It must be a number between 1 and 100,000,000!">
+                        <f:validateLongRange minimum = "1" maximum = "100000000" />
+                    </h:inputText>
+                    <h:message for="userId" styleClass="error">
+                    </h:message>
+                </div>
+                <!-- Form submit button -->
+                <h:commandButton action="#{useTransactionController.searchUser}" id="searchUser" value="Start Transaction">
+                </h:commandButton>
+                <!-- Link back to the public home page -->
+                <p><h:link value="HomePage" outcome="public"/> </p>
+            </h:form>
+            <!-- End Form -->
+        </article>
+        <!-- End Article -->
+    </h:body>
+</html>

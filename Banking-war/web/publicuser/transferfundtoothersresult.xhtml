@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{transactionResultController.pageTitle}</title>
+    </h:head>
+    <h:body>
+        <!-- Start Header -->
+        <header>
+            <h1>
+                #{transactionResultController.pageTitle}
+            </h1>
+            <h:outputStylesheet name="bootstrap.min.css" />
+            <h:outputStylesheet name="style.css" />
+        </header>
+        <!-- End Header -->
+        <!-- Start Article -->
+        <article>
+            <h:form rendered = "#{userInput.transactionSuccess}">
+                <h2> The transaction is successful. </h2>
+                <div> You have transfered $#{userInput.newBankingTransaction.amount}
+                      from Account:#{userInput.fromAccount.accountNumber}
+                      to Account:#{userInput.toAccount.accountNumber}</div>
+            </h:form>
+            <h:form rendered = "#{not userInput.transactionSuccess}">
+                <h2> The transaction is unsuccessful. </h2>
+                <div><h:outputText value = "You don't have enough balance!" rendered = "#{not userInput.enoughBalance}"/></div>
+                <div><h:outputText value = "The account you are transfering to is invalid!" rendered = "#{not userInput.validToAccount}"/></div>
+            </h:form>
+            <h:form>
+                <!-- Link back to the previous page -->
+                <p><h:link value="Operate more transactions" outcome="usetransaction"/> </p>
+                <!-- Link back to the public home page -->
+                <p><h:link value="HomePage" outcome="public"/> </p>
+
+            </h:form>
+        </article>
+        <!-- End Article -->
+    </h:body>
+</html>

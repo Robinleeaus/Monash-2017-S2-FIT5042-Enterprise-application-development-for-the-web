@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{addUserController.pageTitle}</title>
+    </h:head>
+    <h:body>
+        <!-- Start Header -->
+        <header>
+            <h1>#{addUserController.pageTitle}</h1>
+            <h:outputStylesheet name="bootstrap.min.css" />
+            <h:outputStylesheet name="style.css" />
+        </header>
+        <!-- End Header -->
+        <!-- Start Article -->
+        <article>
+            <!-- Form -->
+            <h:form>
+                <div>
+                    First name
+                </div>
+                <div>
+                    <h:inputText id="firstname" label="firstname" required="true" requiredMessage="You must
+                                 enter the first name!" value="#{workerInput.bankingSystemUser.firstName}">
+                    </h:inputText>
+                    <h:message for="firstname" styleClass="error">
+                    </h:message>
+                </div>
+                <div>
+                    Last Name
+                </div>
+                <div>
+                    <h:inputText id="lastname" label="lastname" required="true" requiredMessage="You must
+                                 enter the last name!" value="#{workerInput.bankingSystemUser.lastName}">
+                    </h:inputText>
+                    <h:message for="lastname" styleClass="error">
+                    </h:message>
+                </div>
+                <div>
+                    Email
+                </div>
+                <div>
+                    <h:inputText id="email" label="email" required="true" requiredMessage="You must
+                                 enter the email!" value="#{workerInput.bankingSystemUser.email}"
+                                 validatorMessage="Email format is not correct!">
+                        <f:validateRegex pattern="([^.@]+)(\.[^.@]+)*@([^.@]+\.)+([^.@]+)" />
+                    </h:inputText>
+                    <h:message for="email" styleClass="error">
+                    </h:message>
+                </div>
+                <div>
+                    Password
+                </div>
+                <div>
+                    
+                    <!-- password contains lower case letters only and 
+                    length of the password should be greater than 6. -->
+                    <h:inputSecret id = "password" label="password" required="true" requiredMessage="You must
+                                 enter the password!" value = "#{workerInput.bankingSystemUser.password}"
+                                 validatorMessage="Password must have at least one alphabet and the length should be greater than 6!">
+                        <f:validateRegex pattern ="((?=.*[a-zA-Z]).{6,})" />
+                    </h:inputSecret>
+                    <h:message for="password" styleClass="error">
+                    </h:message>
+                </div>
+                <div>
+                    Type
+                </div>
+                <div>
+<!--                    <h:inputText id="type" label="type" required="true" requiredMessage="You must
+                                 enter the type!" value="{workerInput.bankingSystemUser.type}">
+                    </h:inputText>
+                    <h:message for="type" styleClass="error">
+                    </h:message>-->
+                    
+                    <h:selectOneMenu id="type" style="margin-bottom: 20px" value = "#{workerInput.bankingSystemUser.type}"> 
+                        <f:selectItem itemValue = "Bank Worker" itemLabel = "Bank Worker User" /> 
+                        <f:selectItem itemValue = "Public" itemLabel = "Public User" />
+                    </h:selectOneMenu> 
+                    <h:message for="type" styleClass="error">
+                    </h:message>
+                </div>
+                <div>
+                    Address
+                </div>
+                <div>
+                    <h:inputText id="address" label="address" required="true" requiredMessage="You must
+                                 enter the address!" value="#{workerInput.bankingSystemUser.address}">
+                    </h:inputText>
+                    <h:message for="address" styleClass="error">
+                    </h:message>
+                </div>
+                <div>
+                    Phone Number
+                </div>
+                <div>
+                    <h:inputText id="phoneNumber" label="phoneNumber" required="true" requiredMessage="You must
+                                 enter the phone number!" value="#{workerInput.bankingSystemUser.phoneNumber}"
+                                 validatorMessage="The lenght should be between 10 and 12!">
+                        <f:validateLength minimum = "10" maximum = "12" />
+                    </h:inputText>
+                    <h:message for="phoneNumber" styleClass="error">
+                    </h:message>
+                </div>
+                <h:commandButton action="#{addUserController.save}" id="save" value="Save">
+                </h:commandButton>
+                <!-- Link back to the previous page -->
+                <p><h:link value="Back" outcome="manageusers"/> </p>
+                <!-- Link back to the public home page -->
+                <p><h:link value="HomePage" outcome="bankworker"/> </p>
+            </h:form>
+        </article>
+        <!-- End Article -->
+    </h:body>
+</html>

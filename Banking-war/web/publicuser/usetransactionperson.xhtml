@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{useTransactionPersonController.pageTitle}</title>
+    </h:head>
+    <h:body>
+        <!-- Start Header -->
+        <header>
+            <h1>
+                #{useTransactionPersonController.pageTitle}
+            </h1>
+            <h:outputStylesheet name="bootstrap.min.css" />
+            <h:outputStylesheet name="style.css" />
+        </header>
+        <!-- End Header -->
+        <!-- Start Article -->
+        <article>
+            <h:form>
+                <h2>User ID: #{userInput.userId}</h2>
+                <h3>These are all your banking accounts.</h3>
+                <h:outputText value = "There is no account found!" rendered = "#{empty userInput.accounts}"/>
+                <h:dataTable value = "#{userInput.accounts}"  var = "bankingAccount" 
+                             styleClass = "bankingAccountTable"
+                             headerClass = "bankingAccountTableHeader"
+                             rowClasses = "bankingAccountTableOddRow,bankingAccountTableEvenRow"
+                             rendered = "#{not empty userInput.accounts}">
+
+                    <h:column>    				
+                        <f:facet name = "header">Number</f:facet>    				
+                            #{bankingAccount.accountNumber}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name = "header">Type</f:facet>
+                            #{bankingAccount.accountType}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name = "header">Balance</f:facet>
+                            #{bankingAccount.balance}
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name = "header">Transfer fund</f:facet>
+                        <h:commandButton action="#{useTransactionPersonController.transferFundToOthers}" id="transferfundtoothers" value="Transfer fund">
+                            <f:param name="accountNumber" value="#{bankingAccount.accountNumber}"></f:param>
+                        </h:commandButton>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name = "header">Deposit</f:facet>
+                        <h:commandButton action="#{useTransactionPersonController.deposit}" id="deposit" value="Deposit">
+                            <f:param name="accountNumber" value="#{bankingAccount.accountNumber}"></f:param>
+                        </h:commandButton>
+                    </h:column>
+                    
+                    <!-- Hidden column starts-->
+                    <h:column rendered = "false">
+                        <f:facet name = "header">User ID</f:facet>
+                            #{bankingAccount.bankingSystemUser.idNumber}
+                    </h:column>
+                    <!-- Hidden column ends-->
+                </h:dataTable>
+                <!-- Link back to the previous page -->
+                <p><h:link value="Back" outcome="usetransaction"/> </p>
+                <!-- Link back to the public home page -->
+                <p><h:link value="HomePage" outcome="public"/> </p>
+
+            </h:form>
+        </article>
+        <!-- End Article -->
+    </h:body>
+</html>

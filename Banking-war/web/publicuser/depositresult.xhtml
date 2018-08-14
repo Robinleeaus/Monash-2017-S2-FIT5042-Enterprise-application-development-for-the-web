@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{depositResultController.pageTitle}</title>
+    </h:head>
+    <h:body>
+        <!-- Start Header -->
+        <header>
+            <h1>
+                #{depositResultController.pageTitle}
+            </h1>
+            <h:outputStylesheet name="bootstrap.min.css" />
+            <h:outputStylesheet name="style.css" />
+        </header>
+        <!-- End Header -->
+        <!-- Start Article -->
+        <article>
+            <h:form rendered = "#{userInput.depositSuccess}">
+                <h2> The deposit is successful. </h2>
+                <div> You have deposited $#{userInput.newBankingTransaction.amount}
+                      to Account:#{userInput.toAccount.accountNumber}</div>
+            </h:form>
+            <h:form rendered = "#{not userInput.depositSuccess}">
+                <h2> The transaction is unsuccessful. </h2>
+            </h:form>
+            <h:form>
+                <!-- Link back to the previous page -->
+                <p><h:link value="Operate more transactions" outcome="usetransaction"/> </p>
+                <!-- Link back to the public home page -->
+                <p><h:link value="HomePage" outcome="public"/> </p>
+
+            </h:form>
+        </article>
+        <!-- End Article -->
+    </h:body>
+</html>

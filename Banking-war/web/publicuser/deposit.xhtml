@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{depositController.pageTitle}</title>
+    </h:head>
+    <h:body>
+        <!-- Start Header -->
+        <header>
+            <h1>#{depositController.pageTitle}</h1>
+            <h:outputStylesheet name="bootstrap.min.css" />
+            <h:outputStylesheet name="style.css" />
+        </header>
+        <!-- End Header -->
+        <!-- Start Article -->
+        <article>
+            <!-- Form -->
+            <h:form>
+                <h2>User ID: #{userInput.userId}</h2>
+                <h3>You can deposit to the account you selected.</h3>
+                <div>
+                    To account (Account number - Balance)
+                </div>
+                <div class="bottommargin">
+                    #{userInput.toAccount.accountNumber} - $ #{userInput.toAccount.balance}
+                </div>
+                <div>
+                    Banking transaction name
+                </div>
+                <div>
+                    <h:inputText id="bankingtransactionname" label="bankingtransactionname" required="true" requiredMessage="You must
+                                 enter a banking transaction name!" value="#{userInput.newBankingTransaction.bankingTransactionName}">
+                    </h:inputText>
+                    <h:message for="bankingtransactionname" styleClass="error">
+                    </h:message>
+                </div>
+                <div>
+                    Description
+                </div>
+                <div>
+                    <h:inputText id="description" label="description" required="true" requiredMessage="You must
+                                 enter a description!" value="#{userInput.newBankingTransaction.description}">
+                    </h:inputText>
+                    <h:message for="description" styleClass="error">
+                    </h:message>
+                </div>
+                <div>
+                    Amount
+                </div>
+                <div>
+                    <h:inputText id="amount" label="amount" required="true" requiredMessage="You must
+                                 enter an amount!" value="#{userInput.newBankingTransaction.amount}"
+                                 validatorMessage="It must be a number between 1 and 100,000,000!">
+                        <f:validateLongRange minimum = "1" maximum = "100000000" />
+                    </h:inputText>
+                    <h:message for="amount" styleClass="error">
+                    </h:message>
+                </div>
+                <div>Are you sure you want to deposit?</div>
+                <h:commandButton action="#{depositController.save}" id="save" value="Save">
+                </h:commandButton>
+                <!-- Link back to the previous page -->
+                <p><h:link value="Back" outcome="usetransactionperson"/> </p>
+                <!-- Link back to the public home page -->
+                <p><h:link value="HomePage" outcome="public"/> </p>
+            </h:form>
+        </article>
+        <!-- End Article -->
+    </h:body>
+</html>

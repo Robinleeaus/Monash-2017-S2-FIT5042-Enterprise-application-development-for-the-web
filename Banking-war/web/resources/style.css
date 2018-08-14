@@ -1,0 +1,56 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2017/9/6, 上午 11:32:36
+    Author     : robinlee
+*/
+
+.bankingTransactionTable, .bankingSystemUserTable, .bankingAccountTable {   
+   border-collapse:inherit;
+   border:1px solid #000000;
+}
+
+.bankingTransactionTableHeader, .bankingSystemUserTableHeader, .bankingAccountTableHeader {
+   text-align:center;
+   background:none repeat scroll 0 0 #B5B5B5;
+   /*border-bottom:1px solid #000000;*/  
+   padding:2px;
+}
+
+.bankingTransactionTableOddRow, .bankingSystemUserTableOddRow, .bankingAccountTableOddRow {
+   text-align:center;
+   background:none repeat scroll 0 0 #FFFFFFF;	
+   border:1px solid #000000; 
+}
+
+.bankingTransactionTableEvenRow, .bankingSystemUserTableEvenRow, .bankingAccountTableEvenRow {
+   text-align:center;
+   background:none repeat scroll 0 0 #D3D3D3;
+   border:1px solid #000000;
+}
+
+
+html { background: #EAEAEA; }
+body { background: #FFF; width: 960px; margin: 0 auto; font-family: sans-serif; padding-bottom: 5px; }
+/*header { background: #9CF; height: 40px; padding: 20px; }*/
+header { background: #9CF; padding: 20px; }
+article { padding: 20px; }
+footer { background: #EEE; border: 1px solid #999; margin: 5px 10px; padding: 0 10px; }
+/* Headings */
+header h1 { color: #FFF; margin: 0; }
+h2 { margin: 0; }
+/* Form Elements */
+form p { font-weight: bold; margin: 0; }
+input { margin-bottom: 20px; }
+textarea { display: block; margin-bottom: 10px; height: 240px; width: 480px;}
+/* Error validation */
+.error { color: red; font-weight: bold; }
+
+.table {width: auto}
+
+div.bottommargin {
+    margin-bottom: 20px;
+}

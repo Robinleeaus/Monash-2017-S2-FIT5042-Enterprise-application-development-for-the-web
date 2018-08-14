@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{userDetailController.pageTitle}</title>
+    </h:head>
+    <h:body>
+        <!-- Start Header -->
+        <header>
+            <h1>#{userDetailController.pageTitle}</h1>
+            <h:outputStylesheet name="bootstrap.min.css" />
+            <h:outputStylesheet name="style.css" />
+        </header>
+        <!-- End Header -->
+        <!-- Start Article -->
+        <article>
+            <table class="table table-striped table-bordered">
+                <tbody>
+                    <tr>
+                        <td>ID</td>
+                        <td>#{userDetailController.bankingSystemUser.idNumber}</td>
+                    </tr>
+                    <tr>
+                        <td>First name</td>
+                        <td>#{userDetailController.bankingSystemUser.firstName}</td>
+                    </tr>
+                    <tr>
+                        <td>Last name</td>
+                        <td>#{userDetailController.bankingSystemUser.lastName}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>#{userDetailController.bankingSystemUser.email}</td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td>#{userDetailController.bankingSystemUser.password}</td>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td>#{userDetailController.bankingSystemUser.type}</td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>#{userDetailController.bankingSystemUser.address}</td>
+                    </tr>
+                    <tr>
+                        <td>Phone number</td>
+                        <td>#{userDetailController.bankingSystemUser.phoneNumber}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--<f:facet name = "header">Edit</f:facet>-->
+            <!-- Link back to the previous page -->
+            <p><h:link value="Back" outcome="manageusers"/> </p>
+            <!-- Link back to the public home page -->
+            <p><h:link value="HomePage" outcome="bankworker"/> </p>
+        </article>
+        <!-- End Article -->
+    </h:body>
+</html>

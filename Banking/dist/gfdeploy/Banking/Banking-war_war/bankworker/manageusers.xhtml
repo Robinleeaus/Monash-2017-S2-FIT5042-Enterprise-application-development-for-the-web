@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{manageUsersController.pageTitle}</title>
+    </h:head>
+    <h:body>
+        <!-- Start Header -->
+        <header>
+            <h1>
+                #{manageUsersController.pageTitle}
+            </h1>
+            <h:outputStylesheet name="bootstrap.min.css" />
+            <h:outputStylesheet name="style.css" />
+        </header>
+        <!-- End Header -->
+        <!-- Start Article -->
+        <article>
+            <h:form>
+                <!--<h:commandButton action="adduser" id="create" value="Create a new user">-->
+                <h:commandButton action="#{manageUsersController.addUser}" id="create" value="Create a new user">
+                </h:commandButton>
+                <h2>All Banking System Users</h2>
+                <h:outputText value = "There is no system user found!" rendered = "#{empty workerInput.allBankingSystemUser}"/>
+                <h:dataTable value = "#{workerInput.allBankingSystemUser}"  var = "allBankingSystemUser" 
+                             styleClass = "bankingSystemUserTable"
+                             headerClass = "bankingSystemUserTableHeader"
+                             rowClasses = "bankingSystemUserTableOddRow,bankingSystemUserTableEvenRow"
+                             rendered = "#{not empty workerInput.allBankingSystemUser}">
+
+                    <h:column>    				
+                        <f:facet name = "header">ID</f:facet>    				
+                            #{allBankingSystemUser.idNumber}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name = "header">First Name</f:facet>
+                            #{allBankingSystemUser.firstName}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name = "header">Last Name</f:facet>
+                            #{allBankingSystemUser.lastName}
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name = "header">Type</f:facet>
+                            #{allBankingSystemUser.type}
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name = "header">View detail</f:facet>
+<!--                        <h:link value="Detail" outcome="userdetail">
+                            <f:param name="userIdNumber" value="{allBankingSystemUser.idNumber}"></f:param>
+                        </h:link>-->
+                        <h:commandButton action="userdetail" id="detail" value="Detail">
+                            <f:param name="userIdNumber" value="#{allBankingSystemUser.idNumber}"></f:param>
+                        </h:commandButton>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name = "header">Edit</f:facet>
+                        <!--<h:link value="Edit" outcome="edituser">-->
+<!--                        <h:link value="Edit" outcome="{manageUsersController.edit}">
+                            <f:param name="userIdNumber" value="{allBankingSystemUser.idNumber}"></f:param>
+                        </h:link>-->
+                        <h:commandButton action="#{manageUsersController.editUser}" id="edit" value="Edit">
+                            <f:param name="userIdNumber" value="#{allBankingSystemUser.idNumber}"></f:param>
+                        </h:commandButton>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name = "header">Delete</f:facet>
+<!--                        <h:link value="Delete" outcome="deleteuser">
+                            <f:param name="userIdNumber" value="{allBankingSystemUser.idNumber}"></f:param>
+                        </h:link>-->
+                        <h:commandButton action="deleteuser" id="delete" value="Delete">
+                            <f:param name="userIdNumber" value="#{allBankingSystemUser.idNumber}"></f:param>
+                        </h:commandButton>
+                    </h:column>
+                    
+                    <!-- Hidden column starts-->
+                    <h:column rendered = "false">
+                        <f:facet name = "header">Email</f:facet>
+                            #{allBankingSystemUser.email}
+                    </h:column>
+                    <!-- Hidden column ends-->
+                </h:dataTable>
+                <!-- Link back to the bank worker home page -->
+                <p><h:link value="HomePage" outcome="bankworker"/> </p>
+
+            </h:form>
+        </article>
+        <!-- End Article -->
+    </h:body>
+</html>
