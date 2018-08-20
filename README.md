@@ -1,5 +1,6 @@
 # Monash-2017-S2-FIT5042-Enterprise-application-development-for-the-web
-This is a web-based banking enterprise application. The function provided is as below.
+This is a web-based banking enterprise application. I adopt Java enterprise technologies to implement the system, such as JSF, Persistence
+API, EJB, container managed entity manager, input validation, Criteria API and JPQL. The function provided is as below.
 
 Public user: </br>
 A. Search for a banking transaction by type, banking transaction number and banking
@@ -11,6 +12,3 @@ information is stored in the database and can be viewed by above function.
 Bank worker:  </br>
 A. Manage users including add, view, edit and delete both public users and bank
 workers.
-
-I adopt Java enterprise technologies to implement the system, such as JSF, Persistence
-API, EJB, container managed entity manager, input validation, Criteria API and JPQL.
